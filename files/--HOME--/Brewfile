@@ -69,46 +69,42 @@ brew 'ripgrep'
 brew 'syncthing'
 brew 'tldr'
 
-cask 'aldente', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'AlDente'"
-cask 'brave-browser'
+# cask 'aldente'
+cask 'brave-browser@nightly'
+cask 'bruno'
 cask 'clocker', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Clocker'"
 cask 'firefox@nightly' #, greedy: true
-cask 'fliqlo'
-cask 'floorp'
-cask 'jordanbaird-ice', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Ice'" if OS::Mac::version >= 14
-cask 'keepassxc@beta'
-cask 'keycastr'
-cask 'keyclu' if is_arm
+# cask 'fliqlo'
+# cask 'google-chrome'
+cask 'intellij-idea'
+# cask 'intellij-idea-ce'
+# cask 'jordanbaird-ice', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Ice'" if OS::Mac::version >= 14
+# cask 'keycastr'
+# cask 'keyclu' if is_arm
+# cask 'keepassxc@beta'
+# cask 'keepingyouawake'
+# cask 'monolingual'
+# cask 'notunes'
 cask 'ollama-app', restart_service: :changed
 cask 'onlyoffice'
 cask 'onyx' unless is_beta_os
-cask 'pearcleaner'
-cask 'protonvpn'
+# cask 'pearcleaner'
+# cask 'picocrypt' if is_arm
+# cask 'protonvpn'
 cask 'rancher'
 cask 'raycast', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Raycast'"
-cask 'stats', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Stats'"
+# cask 'silicon' if is_arm
+# cask 'stats', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Stats'"
+# cask 'the-unarchiver'
 cask 'vscodium@insiders'   # TODO: Doesn't handle 'Remote Containers' and GH-based auto-syncing when compared to VSCode
-cask 'zen@twilight'
+cask 'windows-app'
+# cask 'zen-browser@twilight'
 cask 'zoom'
-
-brew 'mas'
-mas 'PDFgear', id: 6469021132
 
 # VSCode extensions
 # Note: I don't want brew to silently install VS Code (which is what it does currently if the following lines are present but it doesn't find the executable 'code'!)
 is_vscode_installed = !`PATH="/opt/homebrew/bin:/usr/local/bin:${PATH}" which code`.chomp.empty?  # explicitly set PATH since the shell being opened doesn't run the login configs
 if is_vscode_installed
-  # This is failing on different machines
-  # vscode 'eamodio.gitlens'
-  # vscode 'formulahendry.code-runner'
-  # vscode 'nicolasvuillamy.vscode-groovy-lint'
-  # vscode 'redhat.java'
-  # vscode 'sonarsource.sonarlint-vscode'
-  # vscode 'vscjava.vscode-java-debug'
-  # vscode 'vscjava.vscode-java-pack'
-  # vscode 'vscjava.vscode-java-test'
-  # vscode 'vscjava.vscode-lombok'
-  # vscode 'wholroyd.jinja'
   vscode 'brandonkirbyson.vscode-animations'
   vscode 'britesnow.vscode-toggle-quotes'
   vscode 'codezombiech.gitignore'
@@ -130,10 +126,10 @@ if is_vscode_installed
   vscode 'ms-vscode.vscode-typescript-next'
   vscode 'oderwat.indent-rainbow'
   vscode 'orta.vscode-jest'
+  vscode 'rebornix.ruby'
   vscode 'redhat.vscode-yaml'
   vscode 'richie5um2.vscode-sort-json'
   vscode 'shan.code-settings-sync'
-  vscode 'shopify.ruby-lsp'
   vscode 'tchayen.markdown-links'
   vscode 'tyriar.sort-lines'
   vscode 'vscode-icons-team.vscode-icons'
@@ -162,6 +158,9 @@ brew 'mercurial'
 # brew 'kubernetes-cli', link: true   # Note: Had to do this: rm /usr/local/bin/kubectl && brew link --overwrite kubernetes-cli
 # brew 'kubernetes-helm'
 
+# ---- command-line utilities
+# brew 'fzy'
+
 # ---- git utilities
 # brew 'git-crypt'
 
@@ -170,18 +169,16 @@ brew 'mercurial'
 # brew 'tmux'
 
 # ---- general utilities
-# brew 'fzy'
+# brew 'gradle'
 # brew 'gradle-completion'
-# brew 'gs'   # used for compressing PDFs
 # brew 'libressl', link: true
 # brew 'localstack'
-# brew 'shellcheck'
 # brew 'speedtest-cli'
-# brew 'watch'
-# brew 'wifi-password'
+
+# https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
+# cask 'git-credential-manager'
 
 # ---- casks
-# cask 'cloudflare-warp'
 # cask 'dbeaver-community'
 # cask 'ghostty'
 # cask 'git-credential-manager'   # https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git
